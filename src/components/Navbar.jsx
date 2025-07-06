@@ -2,71 +2,87 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { HiOutlineMenuAlt3, HiX } from "react-icons/hi"; // npm install react-icons
+import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/about" },
+    { name: "Surveys", path: "/surveys" },
+  
+    { name: "Contact Us", path: "/contact" },
+  ];
+
   return (
-    
-    <nav className="bg-white shadow-md p-4">
-      
-      <div className="flex justify-between items-center">
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
-        
- <div className="flex items-center space-x-2">
-  <img
-    src="/image/AUSPAC LOGO1.png"
-    alt="AusPac Logo"
-    className="h-16 w-16 object-contain"
-    loading="eager"
-  />
-</div>
+        <Link to="/" className="flex items-center space-x-2">
+          <img
+            src="/image/AUSPAC LOGO1.png"
+            alt="AusPac Logo"
+            className="h-32 w-32 object-contain"
+            loading="eager"
+          />
+      <div className="text-4xl font-bold leading-none">
+    <span className="text-[#0077B6]">Aus</span>
+    <span className="text-[#00B4D8]">Pac</span>
+  </div>
 
+        </Link>
 
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center space-x-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
 
-
-        {/* Hamburger Button */}
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? (
-              <HiX className="h-8 w-8 text-blue-600" />
-            ) : (
-              <HiOutlineMenuAlt3 className="h-8 w-8 text-blue-600" />
-            )}
+        {/* Desktop Call Button */}
+        <div className="hidden md:block">
+          <button className="bg-blue-600 text-white px-5 py-2 rounded-md font-medium hover:bg-blue-700 transition duration-200">
+            Call Me Now
           </button>
         </div>
 
-        {/* Navigation Menu (desktop) */}
-        <div className="hidden md:flex space-x-4">
-          <Link to="/" className="hover:text-blue-600">Home</Link>
-          <Link to="/about" className="hover:text-blue-600">About Us</Link>
-          <Link to="/surveys" className="hover:text-blue-600">Surveys</Link>
-          <Link to="/support" className="hover:text-blue-600">We Support Global Warming</Link>
-          <Link to="/gallery" className="hover:text-blue-600">Gallery</Link>
-          <Link to="/contact" className="hover:text-blue-600">Contact Us</Link>
-        </div>
-
-        {/* Call Me Button (desktop) */}
-        <div className="hidden md:block">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Call Me Now
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
+            {isOpen ? (
+              <HiX className="h-8 w-8 text-blue-700" />
+            ) : (
+              <HiOutlineMenuAlt3 className="h-8 w-8 text-blue-700" />
+            )}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="flex flex-col mt-4 space-y-2 md:hidden">
-          <Link to="/" onClick={() => setIsOpen(false)} className="hover:text-blue-600">Home</Link>
-          <Link to="/about" onClick={() => setIsOpen(false)} className="hover:text-blue-600">About Us</Link>
-          <Link to="/surveys" onClick={() => setIsOpen(false)} className="hover:text-blue-600">Surveys</Link>
-          <Link to="/support" onClick={() => setIsOpen(false)} className="hover:text-blue-600">We Support Global Warming</Link>
-          <Link to="/gallery" onClick={() => setIsOpen(false)} className="hover:text-blue-600">Gallery</Link>
-          <Link to="/contact" onClick={() => setIsOpen(false)} className="hover:text-blue-600">Contact Us</Link>
-          <button className="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Call Me Now
-          </button>
+        <div className="md:hidden bg-white px-6 pb-4 shadow-inner">
+          <div className="flex flex-col space-y-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className="text-gray-800 hover:text-blue-600 transition"
+              >
+                {link.name}
+              </Link>
+            ))}
+            <button className="bg-blue-600 text-white w-full py-2 rounded-md hover:bg-blue-700 transition">
+              Call Me Now
+            </button>
+          </div>
         </div>
       )}
     </nav>

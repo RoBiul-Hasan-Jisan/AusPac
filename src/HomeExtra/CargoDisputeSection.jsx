@@ -1,88 +1,89 @@
-
-
-//const cargoImages = [
- //'/image/img1.jpeg',
-  //'/image/img2.jpeg',
- // '/image/img3.jpeg',
- // '/image/img4.jpeg',
- // '/image/img5.jpeg',
- // '/image/img6.jpeg',
- // '/image/img7.jpeg',
- // '/image/img8.jpeg',
- // '/image/img9.jpeg',
-  //'/image/img10.jpeg',
-//];
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
-// Import modules from 'swiper/modules'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-
-const cargoImages = [
-  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1519659528534-75e227db988f?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1513569771921-daf7faaf5087?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&q=80",
-];
-
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import cargoImages from "../data/cargoImages";
 
 export default function CargoDisputeSection() {
+  const navigate = useNavigate(); // ✅ useNavigate hook
+
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-      
-      {/* Left Text */}
-      <div className="text-gray-900 space-y-6">
+    <section className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+  {/* Left Text - Centered Vertically */}
+  <div className="flex justify-center">
+    <div className="bg-white rounded-xl shadow-lg p-10 text-gray-800 max-w-xl space-y-8">
+      <h2 className="text-3xl font-extrabold text-indigo-600">
+        Facing Cargo Disputes?
+      </h2>
+
+      <div className="space-y-4 text-lg leading-relaxed">
         <p>
-          <strong>Your vessel has just loaded a cargo.</strong> Now there is a dispute between the Master and the shipper as to the quantity of cargo loaded. What do you do?
+          <strong className="text-indigo-700">Your vessel has just loaded a cargo.</strong> 
+          Now there is a dispute between the Master and the shipper as to the quantity of cargo loaded. What do you do?
         </p>
         <p>
-          <strong>Your vessel has just discharged cargo.</strong> Now there is a dispute between the Master and the receiver as to the quantity of cargo discharged. What do you do?
+          <strong className="text-indigo-700">Your vessel has just discharged cargo.</strong> 
+          Now there is a dispute between the Master and the receiver as to the quantity of cargo discharged. What do you do?
         </p>
         <p>
           You open cargo holds at the discharge port and find cargo has shifted and there could possibly be damage to it. What do you do?
         </p>
         <p>
-          You are a ship owner expecting a rather strict cargo hold inspection before you load a delicate cargo and you want your interests protected. What do you do?
+          You are a ship owner expecting a strict cargo hold inspection before you load delicate cargo and want your interests protected. What do you do?
         </p>
-        <p>
-          <strong>Call on an experienced and trusted Marine Consultant and Surveyor, is what you do.</strong>
+        <p className="font-semibold text-indigo-600">
+          Call on an experienced and trusted Marine Consultant and Surveyor, is what you do.
         </p>
       </div>
 
-      {/* Right Image Slider */}
-      <div className="rounded-lg overflow-hidden shadow-lg max-w-md w-full">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={10}
-          slidesPerView={1}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          loop
-        >
-          {cargoImages.map((src, i) => (
-            <SwiperSlide key={i}>
-              <img
-                src={src}
-                alt={`Cargo related ${i + 1}`}
-                className="w-full h-72 object-cover rounded-lg"
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    </section>
+      <button
+        type="button"
+        className="mt-6 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition"
+        onClick={() => navigate("/contact")}
+      >
+        Contact Us Now
+      </button>
+    </div>
+  </div>
+
+  {/* Right Image Slider */}
+  <div className="relative w-full max-w-lg mx-auto overflow-hidden rounded-3xl shadow-2xl ring-1 ring-gray-300 bg-white">
+  <Swiper
+    modules={[Navigation, Pagination, Autoplay]}
+    spaceBetween={30}
+    slidesPerView={1}
+    navigation
+    pagination={{ clickable: true }}
+    autoplay={{ delay: 3500, disableOnInteraction: false }}
+    loop
+    className="rounded-3xl"
+  >
+    {cargoImages.map((src, i) => (
+      <SwiperSlide key={i}>
+        <div className="relative group aspect-video">
+          <img
+            src={src}
+            alt={`Cargo image ${i + 1}`}
+            loading="lazy"
+            className="w-full h-full object-cover rounded-3xl transition duration-700 ease-in-out group-hover:scale-105 group-hover:brightness-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+          {/* Optional Caption */}
+          {/* 
+          <div className="absolute bottom-4 left-4 text-white text-sm font-medium z-10">
+            Cargo Scene {i + 1}
+          </div> 
+          */}
+        </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</div>
+
+</section>
   );
 }
