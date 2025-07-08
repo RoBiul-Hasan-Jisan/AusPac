@@ -64,8 +64,11 @@ export default function Surveys() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            whileHover={{ y: -8, boxShadow: "0 20px 30px rgba(99, 102, 241, 0.2)" }}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-transform duration-300"
+            whileHover={{
+              y: -8,
+              boxShadow: "0 20px 30px rgba(99, 102, 241, 0.2)",
+            }}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-transform duration-300 max-w-xs sm:max-w-none mx-auto"
             tabIndex={0}
             aria-labelledby={`${survey.title}-title`}
           >
@@ -73,7 +76,7 @@ export default function Surveys() {
               src={survey.image}
               alt={survey.title}
               className="w-full object-cover transition-transform duration-500 ease-in-out"
-              style={{ height: "200px", maxHeight: "calc(50vw)" }} // limits image height on mobile nicely
+              style={{ height: "180px", maxHeight: "calc(45vw)" }} // improved for mobile
               whileHover={{ scale: 1.05 }}
               loading="lazy"
               draggable={false}

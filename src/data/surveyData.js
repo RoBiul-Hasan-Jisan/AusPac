@@ -1,15 +1,17 @@
 // src/data/surveyData.js
+
 const imageURLs = [
-  "https://picsum.photos/id/1011/600/400",
-  "https://picsum.photos/id/1015/600/400",
-  "https://picsum.photos/id/1016/600/400",
-  "https://picsum.photos/id/1020/600/400",
-  "https://picsum.photos/id/1024/600/400",
-  "https://picsum.photos/id/1025/600/400",
-  "https://picsum.photos/id/1033/600/400",
-  "https://picsum.photos/id/1035/600/400",
-  "https://picsum.photos/id/1040/600/400"
+  "/image/draft survey.jpg",
+  "/image/on off hire survey.jpg",
+  "/image/Cargo-hold-cleaning-inspection.jpg",
+  "/image/water tightness.jpg",
+  "/image/port control inspections.jpg",
+  "/image/cargo damage.jpg",
+  "/image/flatrack LASHING-SURVEY.jpg",
+  "/image/General Superintendence.jpg",
+  "/image/P and I Clubs.webp"
 ];
+
 const surveys = [
   {
     title: "Draft Survey",
