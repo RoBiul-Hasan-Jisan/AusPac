@@ -1,16 +1,27 @@
-import React, { memo, useMemo } from "react";
+import React, { memo, useMemo, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 
-const backgroundStyle = {
-  height: "66vh",
-  backgroundImage: "url('/image/herosection3.jpg')",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-};
+const placeholderBlur =
+  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjY2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iNjYiIGZpbGw9IiNkZDhkOGQiLz48L3N2Zz4=";
 
 const HeroSection = () => {
-  // Memoize the style to avoid recreating the object every render
-  const style = useMemo(() => backgroundStyle, []);
+  const [bgImage, setBgImage] = useState(placeholderBlur);
+
+  useEffect(() => {
+    // Swap to optimized image after mount
+    setBgImage("/image/herosection3.jpg");
+  }, []);
+
+  const style = useMemo(
+    () => ({
+      height: "66vh",
+      backgroundImage: `url(${bgImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      transition: "background-image 0.5s ease-in-out",
+    }),
+    [bgImage]
+  );
 
   return (
     <>
@@ -25,6 +36,7 @@ const HeroSection = () => {
           property="og:description"
           content="Precision Surveying | Expert Inspection | Trusted Consultancy serving the maritime industry with accuracy and integrity."
         />
+        {/* Preload removed to avoid warning */}
       </Helmet>
 
       <section role="banner" className="relative w-full" style={style}>
