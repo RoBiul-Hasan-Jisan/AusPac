@@ -1,10 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const linkClasses =
   "text-gray-300 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded underline";
 
 export default function Footer() {
-  // helper function to scroll to top smoothly
   const scrollToTop = (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -30,22 +30,18 @@ export default function Footer() {
         </div>
 
         {/* Quick Links */}
-        <nav
-          aria-label="Footer Navigation"
-          className="md:flex-1"
-          role="navigation"
-        >
+        <nav aria-label="Footer Navigation" className="md:flex-1" role="navigation">
           <h3 className="text-white text-xl font-semibold mb-5">Quick Links</h3>
           <ul className="space-y-3">
             {[
-              { href: "/", label: "Home" },
-              { href: "/about", label: "About Us" },
-              { href: "/surveys", label: "Surveys" },
-            ].map(({ href, label }) => (
+              { to: "/", label: "Home" },
+              { to: "/about", label: "About Us" },
+              { to: "/surveys", label: "Surveys" },
+            ].map(({ to, label }) => (
               <li key={label}>
-                <a href={href} className={linkClasses}>
+                <Link to={to} className={linkClasses} onClick={scrollToTop}>
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -54,9 +50,7 @@ export default function Footer() {
         {/* Contact */}
         <address className="md:flex-1 not-italic space-y-3">
           <h3 className="text-white text-xl font-semibold mb-5">Contact Us</h3>
-          <p className="text-gray-400 max-w-sm">
-            PO Box 317, Cannon Hill, QLD 4170
-          </p>
+          <p className="text-gray-400 max-w-sm">PO Box 317, Cannon Hill, QLD 4170</p>
           <p>
             Phone:{" "}
             <a href="tel:+61733486334" className={linkClasses}>

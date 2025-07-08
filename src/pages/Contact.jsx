@@ -170,63 +170,116 @@ export default function Contact() {
 }
 */
 
+import React from 'react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 export default function ContactUs() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-100 via-blue-50 to-purple-100 p-6">
-      <div className="bg-white rounded-3xl shadow-2xl max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 overflow-hidden">
-        
-        {/* Left Side - Contact Info */}
-        <div className="p-12 flex flex-col justify-center space-y-8">
-          <h1 className="text-5xl font-extrabold text-indigo-700">
-            Contact <span className="text-purple-600">AusPac</span>
-          </h1>
+    <HelmetProvider>
+      <Helmet>
+        <title>Contact AusPac - Trusted Marine Services</title>
+        <meta
+          name="description"
+          content="Contact AusPac for trusted marine service solutions. Reach out via phone, email, or visit us at our Cannon Hill office."
+        />
+        <meta property="og:title" content="Contact AusPac - Trusted Marine Services" />
+        <meta
+          property="og:description"
+          content="Contact AusPac for trusted marine service solutions. Reach out via phone, email, or visit us at our Cannon Hill office."
+        />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "AusPac",
+              "url": "https://yourwebsite.com",
+              "logo": "https://yourwebsite.com/logo.png",
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+61-7-3348-6334",
+                  "contactType": "customer service",
+                  "areaServed": "AU",
+                  "availableLanguage": ["English"]
+                }
+              ],
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "PO Box 317",
+                "addressLocality": "Cannon Hill",
+                "addressRegion": "QLD",
+                "postalCode": "4170",
+                "addressCountry": "Australia"
+              }
+            }
+          `}
+        </script>
+      </Helmet>
 
-          <p className="text-lg text-gray-600 italic max-w-md">
-            “At AusPac, we’re here for you — delivering trusted marine service solutions with care and precision.”
-          </p>
+      <section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-100 via-blue-50 to-purple-100 p-6">
+        <div className="bg-white rounded-3xl shadow-2xl max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+          {/* Left Side - Contact Info */}
+          <div className="p-12 flex flex-col justify-center space-y-8">
+            <h1 className="text-5xl font-extrabold text-indigo-700">
+              Contact <span className="text-purple-600">AusPac</span>
+            </h1>
 
-          <div className="space-y-6 text-gray-700 max-w-md">
-            <ContactItem label="Office Address">
-              PO Box 317<br />Cannon Hill, QLD 4170
-            </ContactItem>
-            <ContactItem label="Phone">
-              <a href="tel:+61733486334" className="text-indigo-600 hover:underline">
-                (+617) 3348 6334
-              </a>
-            </ContactItem>
-            <ContactItem label="Fax">
-              (+617) 3396 8709
-            </ContactItem>
-            <ContactItem label="Mobile">
-              <a href="tel:+61418176815" className="text-indigo-600 hover:underline">
-                (+61) 418 176 815
-              </a>
-            </ContactItem>
-            <ContactItem label="Email">
-              <a
-                href="mailto:surveys@cargocare.com.au"
-                className="text-indigo-600 hover:underline"
-              >
-                surveys@cargocare.com.au
-              </a>
-            </ContactItem>
+            <p className="text-lg text-gray-600 italic max-w-md">
+              “At AusPac, we’re here for you — delivering trusted marine service solutions with care and precision.”
+            </p>
+
+            <div className="space-y-6 text-gray-700 max-w-md">
+              <ContactItem label="Office Address">
+                PO Box 317
+                <br />
+                Cannon Hill, QLD 4170
+              </ContactItem>
+              <ContactItem label="Phone">
+                <a
+                  href="tel:+61733486334"
+                  className="text-indigo-600 hover:underline"
+                  aria-label="Call AusPac Office Phone"
+                >
+                  (+617) 3348 6334
+                </a>
+              </ContactItem>
+              <ContactItem label="Fax">( +617 ) 3396 8709</ContactItem>
+              <ContactItem label="Mobile">
+                <a
+                  href="tel:+61418176815"
+                  className="text-indigo-600 hover:underline"
+                  aria-label="Call AusPac Mobile Phone"
+                >
+                  (+61) 418 176 815
+                </a>
+              </ContactItem>
+              <ContactItem label="Email">
+                <a
+                  href="mailto:surveys@cargocare.com.au"
+                  className="text-indigo-600 hover:underline"
+                  aria-label="Email AusPac Surveys"
+                >
+                  surveys@cargocare.com.au
+                </a>
+              </ContactItem>
+            </div>
+          </div>
+
+          {/* Right Side - Map */}
+          <div className="relative">
+            <iframe
+              title="AusPac Location"
+              src="https://www.google.com/maps?q=PO+Box+317,+Cannon+Hill,+QLD+4170,+Australia&output=embed"
+              className="w-full h-full min-h-[400px] md:min-h-full rounded-r-3xl border-l border-indigo-200"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+            />
           </div>
         </div>
-
-        {/* Right Side - Map */}
-        <div className="relative">
-          <iframe
-            title="AusPac Location"
-            src="https://www.google.com/maps?q=PO+Box+317,+Cannon+Hill,+QLD+4170,+Australia&output=embed"
-            className="w-full h-full min-h-[400px] md:min-h-full rounded-r-3xl border-l border-indigo-200"
-            style={{ border: 0 }}
-            loading="lazy"
-            allowFullScreen
-          />
-        </div>
-      </div>
-    </section>
+      </section>
+    </HelmetProvider>
   );
 }
 
