@@ -4,7 +4,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const services = [
   { name: "Draft Survey", image: "/image/draft survey.jpg" },
-  { name: "On / Off Hire Survey", image: "/image/on off hire survey.jpg" },
+  { name: "On / Off Hire Survey", image: "/image/bunker.jpg" },
   { name: "Cargo Hold Cleanliness Inspection", image: "/image/Cargo-hold-cleaning-inspection.jpg" },
   { name: "Cargo Holds Water-tightness Test / Sealing", image: "/image/water tightness.jpg" },
   { name: "Preparatory Port State Control Inspection", image: "/image/port control inspections.jpg" },

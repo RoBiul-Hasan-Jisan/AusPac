@@ -2,7 +2,7 @@
 
 const imageURLs = [
   "/image/draft survey.jpg",
-  "/image/on off hire survey.jpg",
+  "/image/bunker.jpg",
   "/image/Cargo-hold-cleaning-inspection.jpg",
   "/image/water tightness.jpg",
   "/image/port control inspections.jpg",
